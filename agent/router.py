@@ -5,6 +5,7 @@ from tools.browser import (
     go_back,
     open_website,
     scroll_down,
+    youtube_play,
     youtube_search,
 )
 from tools.desktop import open_application
@@ -25,6 +26,9 @@ def execute_action(agent_action: AgentAction) -> str:
 
     if action == "youtube_search":
         return youtube_search(target or "")
+
+    if action == "youtube_play":
+        return youtube_play(target or "")
 
     if action == "scroll_down":
         return scroll_down()

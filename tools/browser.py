@@ -33,9 +33,72 @@ def google_search(query: str) -> str:
     return open_website(url)
 
 
+
 def youtube_search(query: str) -> str:
     url = f"https://www.youtube.com/results?search_query={quote_plus(query)}"
     return open_website(url)
+
+
+def youtube_play(query: str) -> str:
+    page = start_browser()
+
+    try:
+        search_url = (
+            "https://www.youtube.com/results"
+            f"?search_query={quote_plus(query)}"
+        )
+
+        page.goto(
+            search_url,
+            wait_until="domcontentloaded",
+            timeout=30000,
+        )
+
+        # Find an actual video result, not a channel or playlist.
+        video = page.locator(
+            "ytd-video-renderer a#video-title"
+        ).first
+
+        video.wait_for(state="visible", timeout=15000)
+
+        title = video.get_attribute("title") or query
+        video.click()
+
+        # Wait for the YouTube video player.
+        page.locator("video.html5-main-video").wait_for(
+            state="attached",
+            timeout=15000,
+        )
+
+        # Try to start playback.
+        page.locator("video.html5-main-video").evaluate(
+            """async (video) => {
+                video.muted = false;
+                await video.play();
+            }"""
+        )
+
+        # Check whether playback has actually started.
+        page.wait_for_function(
+            """() => {
+                const video = document.querySelector(
+                    'video.html5-main-video'
+                );
+                return video &&
+                       !video.paused &&
+                       video.readyState >= 2;
+            }""",
+            timeout=10000,
+        )
+
+        return f"Now playing on YouTube: {title}"
+
+    except Exception as error:
+        return (
+            "Could not start YouTube playback automatically. "
+            f"Reason: {error}"
+        )
+
 
 
 def close_browser() -> None:

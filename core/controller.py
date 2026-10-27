@@ -64,7 +64,18 @@ def handle_request(
     # --------------------------------------------------
     # EMAIL - SEND REQUEST
     # --------------------------------------------------
-    if text.startswith("send email"):
+    if (
+        text.startswith((
+            "send email",
+            "send an email",
+            "send a mail",
+            "send mail",
+            "email ",
+            "compose email",
+            "write an email to",
+        ))
+
+    ):
         try:
             email = extract_email_request(user_input)
 

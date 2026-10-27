@@ -19,6 +19,7 @@ def plan_action(user_request: str) -> AgentAction:
         - open_website
         - google_search
         - youtube_search
+        - youtube_play
         - scroll_down
         - go_back
         - close_browser
@@ -44,6 +45,16 @@ def plan_action(user_request: str) -> AgentAction:
         tool = browser
         action = youtube_search
         target = Python tutorials
+
+        Play Shape of You by Ed Sheeran on YouTube
+        tool = browser
+        action = youtube_play
+        target = Ed Sheeran Shape of You official music video
+
+        Open YouTube and play Believer by Imagine Dragons
+        tool = browser
+        action = youtube_play
+        target = Imagine Dragons Believer official music video
         """
     )
 
