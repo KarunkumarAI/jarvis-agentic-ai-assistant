@@ -1,0 +1,37 @@
+# API keys and environment variables
+.env
+.env.*
+!.env.example
+
+# Google credentials and authentication tokens
+credentials.json
+**/credentials.json
+*token*.json
+*client_secret*.json
+*.pem
+*.key
+
+# Python virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Databases and personal data
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs and temporary files
+logs/
+*.log
+structure.txt
+tmp/
+temp/
+
+# IDE files
+.vscode/
+.idea/

@@ -1,0 +1,42 @@
+# streamlit
+# python-dotenv
+# langchain-google-genai  # FOr LLM
+# pydantic 
+
+# SpeechRecognition # For microphone / voice
+# pyttsx3
+
+# playwright #browser automation
+
+# langgraph
+
+# langchain-docling   #RAG
+# langchain-qdrant
+# langchain-text-splitters
+
+
+# google-api-python-client  ## Gmail
+# google-auth-httplib2
+# google-auth-oauthlib
+
+streamlit
+python-dotenv
+pydantic
+
+langchain-google-genai
+langgraph
+
+langchain-docling
+langchain-qdrant
+langchain-text-splitters
+docling
+pypdfium2
+
+SpeechRecognition
+pyttsx3
+
+playwright
+
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
